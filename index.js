@@ -31,6 +31,7 @@ app.use(async (req, res, next) => {
 
 app.get("/api/getUser", async (req, res) => {
     if (req.query.userid) {
+        console.log(req.body)
         if ((await db.collection("user").doc(req.query.userid).get()).exists) {
             const user = await db.collection("user").doc(req.query.userid).get()
             res.status(200).send(user.data())
