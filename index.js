@@ -45,6 +45,7 @@ app.get("/api/getUser", async (req, res) => {
 
 app.post("/api/registerUser", async (req, res) => {
     if (req.body.userid) {
+        console.log(req.body)
         await db.collection("user").doc(req.body.userid).set({
             hasTicket: false
         })
