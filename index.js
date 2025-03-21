@@ -66,6 +66,12 @@ app.patch("/api/boughtTicket", async (req, res) => {
     }
 })
 
+app.post("/api/analytics/joinedGame", (req, res) => {
+    console.log(req.body)
+    
+    res.status(200).send("Success")
+})
+
 app.listen(port, () => {
     console.log("Listening on port", port)
 })
