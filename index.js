@@ -1,7 +1,8 @@
 const e = require("express")
 const app = e()
 const admin = require("firebase-admin")
-const fb = require("firebase")
+const { initializeApp } = require("firebase/app")
+const { getAnalytics } = require("firebase/analytics")
 const port = 3000
 
 if (!admin.apps.length) {
@@ -12,7 +13,8 @@ if (!admin.apps.length) {
 
 const lib = admin.app()
 const db = lib.firestore()
-const fbapp = fb.initializeApp(JSON.parse(process.env["FIREBASE_NORMAL"]))
+const fbapp = initializeApp(JSON.parse(process.env["FIREBASE_NORMAL"]))
+const analytics = getAnalytics(fbapp)
 
 app.use(e.json())
 app.use(async (req, res, next) => {
